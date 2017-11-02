@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Perfil Jurado </title>
+</head>
+<body>
+<p>Bienvenido Administrador: {{mensaje}}!</p>
+	{% if estadoVotaciones == 1 %}
+		<form action="index.php?action=cerrarVotaciones" method="POST">
+			<input type="submit" name="desact" value="Terminar las votaciones">	
+		</form>
+	{% else %}
+		<p>Las votaciones ya se encuentran cerradas!</p>
+		<form action="index.php?action=abrirVotaciones" method="POST">
+			<input type="submit" name="activar" value="Abrir las votaciones">
+		</form>
+	{% endif %}
+	{{permiso}}
+</body>
+</html>

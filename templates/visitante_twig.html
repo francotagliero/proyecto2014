@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Visitante | Proyecto 2017</title>
+</head>
+<body>
+
+<div>
+	<nav>
+		Visitante | <a href="index.php?action=login">Ingresar</a>
+	</nav>
+</div>
+{% if estadoVotacion == 0  %}
+	<h1>Resultados Votaciones de Proyectos 2017</h1>
+	<p>Las votaciones han finaliado</p>
+	<table>
+	  <tr>
+	    <th>Titulo</th>
+	    <th>Tematica</th>
+	    <th>Autor</th>
+	    <th>Cant votos</th>
+	  </tr>
+	  {% for proy in proyectos %}
+	  <tr>
+	    <td>{{proy.title}}</td>
+	    <td>{{proy.thematic}}</td>
+	    <td>{{proy.author}}</td>
+	    <td>{{proy.votos}}</td>
+	  </tr>
+  {% endfor %}
+</table>
+{% else %}
+	<span>Todavía no cerraron las votaciones</span>
+{% endif %}
+</body>
+</html>

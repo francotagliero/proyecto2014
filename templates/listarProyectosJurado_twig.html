@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Votación Proyectos 2017</title>
+</head>
+<body>
+	<p>Bienvenido Jurado: {{usuario}} </p>
+	<h1>Votación Proyectos 2017</h1>
+	<table>
+  <tr>
+    <th>Titulo</th>
+    <th>Tematica</th>
+    <th>Autor</th>
+    
+  </tr>
+  {% for proy in proyectos %}
+  <tr>
+    <td>{{proy.title}}</td>
+    <td>{{proy.thematic}}</td>
+    <td>{{proy.author}}</td>
+    {% if estadoVoto == 0 %}
+    <form action="index.php?action=votar" method="POST">
+      <td><input id="hola" type="submit" name="submit" value="Votar" ></td>
+      <input type="hidden" name="voto" value="{{proy.idProyecto}}">
+    </form>
+    {% else %}
+    	<td>X</td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+{% if estadoVoto == 1 %}
+  <p>Atencion: Usted ya ha votado</p>
+{% else %}
+  <p>Atencion: Se puede votar a un solo proyectos</p>
+{% endif %}
+
+</body>
+</html>
